@@ -57,6 +57,287 @@ body {
   text-align: center;
 }
 
+.app-header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.35rem;
+}
+
+.reset-button {
+  flex-shrink: 0;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--green-dark);
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(47, 79, 47, 0.35);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-height: 32px;
+}
+
+.reset-button:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Tabs */
+.tab-bar {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.6rem var(--side-padding) 0;
+  background-color: var(--beige-100);
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: var(--beige-200);
+  border: 1.5px solid var(--beige-300);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  min-height: 40px;
+}
+
+.tab-btn.active {
+  background-color: var(--green);
+  color: var(--green-dark);
+  border-color: var(--green);
+}
+
+.tab-heart {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* App toast (reset / save / delete feedback) */
+.app-toast {
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--green-dark);
+  background-color: var(--green-pale);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 var(--side-padding);
+  transition: opacity 0.2s, max-height 0.2s, padding 0.2s;
+}
+
+.app-toast.visible {
+  opacity: 1;
+  max-height: 2.5rem;
+  padding: 0.45rem var(--side-padding);
+}
+
+/* Panels (chat / favorites) */
+.panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#favorites-panel {
+  overflow-y: auto;
+  padding: 1.1rem var(--side-padding) 1.25rem;
+  gap: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Condition memo (体調メモ) */
+.memo-form-wrap {
+  flex-shrink: 0;
+  padding: 0.9rem var(--side-padding) 0.6rem;
+  background-color: var(--beige-100);
+  border-bottom: 1px solid var(--beige-300);
+}
+
+.memo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.memo-form-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.memo-label {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.memo-date-input {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background-color: var(--white);
+  border: 1.5px solid var(--beige-300);
+  border-radius: var(--radius-sm);
+  min-height: 38px;
+}
+
+.memo-text-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background-color: var(--white);
+  border: 1.5px solid var(--beige-300);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.2s;
+  min-height: 42px;
+}
+
+.memo-text-input:focus {
+  border-color: var(--green);
+}
+
+.memo-submit-button {
+  flex-shrink: 0;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--green-dark);
+  background-color: var(--green);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.memo-submit-button:hover {
+  background-color: var(--green-light);
+}
+
+.memo-error-hint {
+  min-height: 0;
+  font-size: 0.8rem;
+  color: var(--error);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.memo-error-hint.visible {
+  opacity: 1;
+  padding-top: 0.3rem;
+  min-height: 1.2rem;
+}
+
+.memo-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem var(--side-padding) 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.memo-card {
+  flex-shrink: 0;
+  background-color: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.memo-date {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.memo-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.memo-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.memo-consult-btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--green-dark);
+  background-color: var(--beige-200);
+  border: 1px solid var(--beige-300);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.memo-consult-btn:hover {
+  background-color: var(--beige-300);
+  border-color: var(--green);
+}
+
+.memo-remove-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--error);
+  background-color: transparent;
+  border: 1px solid rgba(192, 57, 43, 0.35);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.memo-remove-btn:hover {
+  background-color: rgba(192, 57, 43, 0.08);
+}
+
+.memo-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  padding: 2rem 0.5rem;
+}
+
 .app-header h1 {
   margin: 0;
   font-size: 1.35rem;
@@ -122,6 +403,209 @@ body {
 
 .message.bot strong {
   color: var(--green-dark);
+  font-weight: 700;
+}
+
+.message-text > *:first-child {
+  margin-top: 0;
+}
+
+.message-text > *:last-child {
+  margin-bottom: 0;
+}
+
+.message-paragraph {
+  margin: 0 0 0.65rem;
+}
+
+.message-list {
+  margin: 0 0 0.65rem;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.message-list li {
+  line-height: 1.6;
+}
+
+.message-heading {
+  margin: 0.85rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.recipe-card {
+  margin: 0.75rem 0;
+  padding: 0.85rem 1rem 0.95rem;
+  background-color: var(--beige-100);
+  border: 1.5px solid var(--beige-300);
+  border-radius: var(--radius-sm);
+}
+
+.recipe-card > *:first-child {
+  margin-top: 0;
+}
+
+.recipe-card > *:last-child {
+  margin-bottom: 0;
+}
+
+.recipe-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--beige-300);
+}
+
+.favorite-text-body > *:first-child {
+  margin-top: 0;
+}
+
+.favorite-text-body > *:last-child {
+  margin-bottom: 0;
+}
+
+.message-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.save-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: fill 0.15s, stroke 0.15s;
+}
+
+.save-btn:hover:not(:disabled) {
+  color: var(--error);
+  background-color: rgba(192, 57, 43, 0.08);
+}
+
+.save-btn:active:not(:disabled) svg {
+  transform: scale(0.85);
+}
+
+.save-btn.saved {
+  color: var(--error);
+  cursor: default;
+}
+
+.save-btn.saved svg {
+  fill: currentColor;
+  animation: heartPop 0.35s ease;
+}
+
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.35);
+  }
+  55% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Favorites list */
+.favorite-card {
+  flex-shrink: 0;
+  background-color: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.favorite-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.favorite-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.favorite-heart {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  margin-top: 0.2rem;
+  fill: var(--error);
+  stroke: var(--error);
+  stroke-width: 2;
+}
+
+.favorite-text-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.favorite-text-body strong {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.favorite-remove-btn {
+  align-self: flex-end;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--error);
+  background-color: transparent;
+  border: 1px solid rgba(192, 57, 43, 0.35);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.favorite-remove-btn:hover {
+  background-color: rgba(192, 57, 43, 0.08);
+}
+
+.favorites-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  padding: 2rem 0.5rem;
 }
 
 .typing-indicator {

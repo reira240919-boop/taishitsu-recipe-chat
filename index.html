@@ -11,34 +11,73 @@
   <body>
     <div id="app">
       <header class="app-header">
+        <div class="app-header-top">
+          <button type="button" id="reset-button" class="reset-button">会話をやり直す</button>
+        </div>
         <h1>体質レシピ相談</h1>
         <p>今の体調を送ると、体質に合うレシピを提案します</p>
       </header>
 
-      <main id="chat-history" class="chat-history" aria-live="polite"></main>
-
-      <div class="quick-questions" id="quick-questions">
-        <button type="button" class="quick-btn" data-message="冷えやすい">冷えやすい</button>
-        <button type="button" class="quick-btn" data-message="疲れが取れない">疲れが取れない</button>
-        <button type="button" class="quick-btn" data-message="胃腸が弱い">胃腸が弱い</button>
-        <button type="button" class="quick-btn" data-message="むくみやすい">むくみやすい</button>
+      <div class="tab-bar" role="tablist">
+        <button type="button" id="tab-chat" class="tab-btn active" role="tab" aria-selected="true">チャット</button>
+        <button type="button" id="tab-favorites" class="tab-btn" role="tab" aria-selected="false">お気に入り</button>
+        <button type="button" id="tab-memo" class="tab-btn" role="tab" aria-selected="false">体調メモ</button>
       </div>
 
-      <div class="error-hint" id="error-hint">体調や気になることを書いてください</div>
+      <div class="app-toast" id="app-toast" role="status" aria-live="polite"></div>
 
-      <footer class="input-bar">
-        <form id="chat-form" class="chat-form">
-          <input
-            type="text"
-            id="message-input"
-            class="message-input"
-            placeholder="体調や気になることを入力…"
-            autocomplete="off"
-            enterkeyhint="send"
-          />
-          <button type="submit" id="send-button" class="send-button">送信</button>
-        </form>
-      </footer>
+      <div id="chat-panel" class="panel">
+        <main id="chat-history" class="chat-history" aria-live="polite"></main>
+
+        <div class="quick-questions" id="quick-questions">
+          <button type="button" class="quick-btn" data-message="冷えやすい">冷えやすい</button>
+          <button type="button" class="quick-btn" data-message="疲れが取れない">疲れが取れない</button>
+          <button type="button" class="quick-btn" data-message="胃腸が弱い">胃腸が弱い</button>
+          <button type="button" class="quick-btn" data-message="むくみやすい">むくみやすい</button>
+        </div>
+
+        <div class="error-hint" id="error-hint">体調や気になることを書いてください</div>
+
+        <footer class="input-bar">
+          <form id="chat-form" class="chat-form">
+            <input
+              type="text"
+              id="message-input"
+              class="message-input"
+              placeholder="体調や気になることを入力…"
+              autocomplete="off"
+              enterkeyhint="send"
+            />
+            <button type="submit" id="send-button" class="send-button">送信</button>
+          </form>
+        </footer>
+      </div>
+
+      <div id="favorites-panel" class="panel" style="display: none" aria-live="polite"></div>
+
+      <div id="memo-panel" class="panel" style="display: none">
+        <div class="memo-form-wrap">
+          <form id="memo-form" class="memo-form">
+            <div class="memo-form-row">
+              <label for="memo-date" class="memo-label">日付</label>
+              <input type="date" id="memo-date" class="memo-date-input" />
+            </div>
+            <div class="memo-form-row">
+              <input
+                type="text"
+                id="memo-text-input"
+                class="memo-text-input"
+                placeholder="例: 今日は冷え、胃の調子が悪い"
+                autocomplete="off"
+              />
+              <button type="submit" id="memo-submit-button" class="memo-submit-button">記録する</button>
+            </div>
+          </form>
+          <div class="memo-error-hint" id="memo-error-hint">体調を書いてください</div>
+        </div>
+
+        <div id="memo-list" class="memo-list" aria-live="polite"></div>
+      </div>
     </div>
 
     <script type="module" src="/main.js"></script>
